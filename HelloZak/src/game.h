@@ -1,5 +1,6 @@
 #pragma once
 
+#include <sstream>
 #include "zakengine/zak.h"
 
 using namespace zak;
@@ -9,9 +10,10 @@ public:
   void OnFrame();
   bool OnShutdown();
   bool OnInit();
+  void OnDraw();
 
   TestGame();
   ~TestGame();
 private:
-
+  void InputDebug();
   };

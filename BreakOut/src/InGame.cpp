@@ -1,12 +1,15 @@
 #include "Ingame.h"
 
-InGame::InGame(void)
-  {
+void InGame::Reset(){
   _puntaje = 0;
   _ladrillosRotos = 0;
-  _totalLadrillos = 0;
-  _state = GAME_STATE_NONE;
   _nivel = 0;
+  }
+
+InGame::InGame(void)
+  {
+  Reset();
+  _state = GAME_STATE_LOADING;
   }
 
 InGame::~InGame(void)
@@ -41,7 +44,8 @@ bool InGame::CheckCollision(zak::Entity2D &entity1, zak::Entity2D &entity2)
   return false;
   }
 
-bool InGame::regenerarMuro(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PER_SIDE])
+
+bool InGame::BuildWall(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PER_SIDE])
   {
   _totalLadrillos = 0;
   _ladrillosRotos = 0;
@@ -62,9 +66,6 @@ bool InGame::regenerarMuro(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PE
       _bricks[y*BRICKS_PER_SIDE+x].SetPos(START_POS_X + x * (w + SPACE_BETWEEN_X), 
         START_POS_Y - y *(h + SPACE_BETWEEN_Y));
 
-      // Seteo el color del ladrillo (si es shape)
-      //_bricks[y * BRICKS_PER_SIDE + x].SetColor(0xFF00FF00);
-
       if(_bricksActivos[y][x] == 1)
         {
         _bricks[y * BRICKS_PER_SIDE + x].SetVisible(true);
@@ -81,7 +82,7 @@ bool InGame::regenerarMuro(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PE
   return true;
   }
 
-bool InGame::regenerarMuro(string nivel)
+bool InGame::BuildWall(string nivel)
   {
   ifstream estructuraMuro(nivel.c_str());
   string linea;
@@ -103,7 +104,7 @@ bool InGame::regenerarMuro(string nivel)
       }
     estructuraMuro.close();
 
-    regenerarMuro(murosVisibles);
+    BuildWall(murosVisibles);
     }
   else cout << "No se pudo abrir el archivo.";
 
@@ -112,27 +113,18 @@ bool InGame::regenerarMuro(string nivel)
 
 bool InGame::Initialize()
   {
-  //// Borrar la pantalla
-  //_clearScreen = true;
-
-  //// Inicializo el color de fondo
-  //g_renderer.SetClearColor(0xFF000000);
-
   // Inicializar la bola
   if(!_ball.Initialize())
     return false;
 
   // Vidas
   _ball.SetVidas(VIDAS);
-  _ball.SetCollisionType(Entity2D::eCollisionCircle);
-  _ball.SetCollisionRadius(_ball.GetWidth() / 2);
-  _ball.SetCollisionVisible(true);
 
   // Inicializar el pad
   if(!_pad.Initialize())
     return false;
 
-  if(!_loading.LoadIni("data/loading.spr"))
+  if(!_loading.Initialize())
     return false;
 
   if(!_loseGame.Initialize())
@@ -142,11 +134,9 @@ bool InGame::Initialize()
     return false;
 
   // Fabrico el muro correspondiente
-  //regenerarMuro();
   _nivel = 0;
   string caso1 = "data/0.txt";
-
-  regenerarMuro(caso1);
+  BuildWall(caso1);
 
   return true;
   }
@@ -160,7 +150,7 @@ void InGame::Update(float dt)
     case GAME_STATE_LOADING:
       // Actualizamos la pantalla de carga
       _loading.Update(dt);		
-      regenerarMuro(aux);
+      BuildWall(aux);
       _state = GAME_STATE_NONE;
       break;
 
@@ -250,9 +240,9 @@ void InGame::Update(float dt)
             _bricks[y * BRICKS_PER_SIDE + x].OnCollide(&_ball);
 
             // Aumento el puntaje
-            _puntaje += 10;
+            _puntaje += _bricks[y * BRICKS_PER_SIDE + x].GetDamage();
             // Aumento la cantidad de ladrillos rotos
-            _ladrillosRotos++;
+            _ladrillosRotos += _bricks[y * BRICKS_PER_SIDE + x].GetDamage() / 100;
             }
           }
 
@@ -268,26 +258,29 @@ void InGame::Update(float dt)
         // Si se acaban las vidas el puntaje es 0
         if(_ball.GetVidas() == 0)
           {
-          _ball.SetVidas(VIDAS);
-          _puntaje = 0;
+          Reset();
           _pad.SetInitialPos();
           _state = GAME_STATE_LOSE;
           Initialize();
           }
 
         // Si se rompen todos los ladrillos vuelve a generarse el muro
-        if(_ladrillosRotos == _totalLadrillos)
+        if(_ladrillosRotos >= _totalLadrillos)
           {
           _nivel++;
 
           if(_nivel < NIVELES)
             {
+            _ladrillosRotos = 0;
             _state = GAME_STATE_LOADING;
             _ball.SetSticky(true);
-            regenerarMuro(aux);
+            _ball.IncreaseSpeed();
+            BuildWall(aux);
             }
-          else
+          else{
+            Reset();
             _state = GAME_STATE_WIN;
+            }
           }
 
         break;
@@ -309,9 +302,9 @@ void InGame::Draw()
       g_renderer.SetFont(FT_TAHOMA, 20);
       g_renderer.SetFontColor(0xFF0FF000);
       // Vidas
-      g_renderer.DrawString(msg_vida.str(), 40, 600  - 20, 10, 10, ZAK_TEXT_CENTER);
+      g_renderer.DrawString(msg_vida.str(), 60, 600  - 20, 10, 10, ZAK_TEXT_CENTER);
       // Puntaje
-      g_renderer.DrawString(msg_puntaje.str(), 800 - 60, 600 -20, 10, 10, ZAK_TEXT_CENTER);
+      g_renderer.DrawString(msg_puntaje.str(), 800 - 100, 600 -20, 10, 10, ZAK_TEXT_CENTER);
       // Nivel
       g_renderer.DrawString(msg_nivel.str(), 400, 600 - 20, 10, 10, ZAK_TEXT_CENTER);
 

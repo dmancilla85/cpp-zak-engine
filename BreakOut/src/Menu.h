@@ -29,6 +29,6 @@ public:
 private:
 	int _state;
 	int _optionSelected;
-	Sprite _option[MENU_OPTIONS_COUNT];
-	Sprite _logo;
+	Sprite *_option;
+	Sprite *_logo;
 };

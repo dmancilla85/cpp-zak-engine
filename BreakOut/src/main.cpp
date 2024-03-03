@@ -23,28 +23,35 @@ using namespace zak;
 #endif
 
 int main () {
-	string desc;
-	TestGame game;
-	GameConfig config;
+  string desc;
+  TestGame *game = new TestGame;
+  GameConfig config;
 
-	if (!config.Load("config.ini"))
-		return false;
+  std::cout << "Starting game..." << std::endl;
 
-	if (game.StartUp(&config)) {
-		game.Loop();
-	} else {
-		game.Shutdown();
+  if (!config.Load("config.ini"))
+    return false;
 
-		MessageBoxA(g_window.GetHWnd(),Log.GetLastMessage(),"Error",MB_ICONERROR|MB_OK);
+  if (game->StartUp(&config)) {
+    game->Loop();
+    } else {
+      game->Shutdown();
 
-		return 1;
-	}
+      MessageBoxA(g_window.GetHWnd(),Log.GetLastMessage(),"Error",MB_ICONERROR|MB_OK);
 
-	if (!game.Shutdown()) {
+      return 1;
+    }
 
-		MessageBoxA(g_window.GetHWnd(),Log.GetLastMessage(),"Error",MB_ICONERROR|MB_OK);
-		return 1;
-	}
-	
-	return 0;
-}
+  if (!game->Shutdown()) {
+
+    MessageBoxA(g_window.GetHWnd(),Log.GetLastMessage(),"Error",MB_ICONERROR|MB_OK);
+    return 1;
+    }
+
+  std::cout << "Ending game... OK." << std::endl;
+
+  if(game)
+    delete game;
+
+  return 0;
+  }

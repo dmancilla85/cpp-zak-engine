@@ -5,6 +5,8 @@
 
 using namespace zak;
 
+#define INITIAL_SPEED 0.2f
+
 class Ball : public Sprite
 {
 public:
@@ -20,6 +22,8 @@ public:
 	void SetVX(float vx) {_vx = vx;}
 	void SetVY(float vy) {_vy = vy;}
 	void SetVidas(int vidas) {_vidas = vidas;}
+  void IncreaseSpeed() {_vx = _vy = _speed += 0.1f;}
+  void RestartSpeed() {_speed = INITIAL_SPEED;}
 
 private:
 	void BoundX(){_vx *= -1;}
@@ -27,6 +31,7 @@ private:
 
 	float _vx;
 	float _vy;
+  float _speed;
 	bool _isSticky;
 	int _vidas;
 

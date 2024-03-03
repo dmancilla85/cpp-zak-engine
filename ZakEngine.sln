@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Shapes", "Shapes\Shapes.vcp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sprites", "Sprites\Sprites.vcproj", "{D7056E18-F9C2-4213-9D27-B8C978D97A33}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "States", "States\States.vcproj", "{1CCFAD49-412B-4DA8-A860-3130363D88B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -31,6 +33,10 @@ Global
 		{D7056E18-F9C2-4213-9D27-B8C978D97A33}.Debug|Win32.Build.0 = Debug|Win32
 		{D7056E18-F9C2-4213-9D27-B8C978D97A33}.Release|Win32.ActiveCfg = Release|Win32
 		{D7056E18-F9C2-4213-9D27-B8C978D97A33}.Release|Win32.Build.0 = Release|Win32
+		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Debug|Win32.Build.0 = Debug|Win32
+		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Release|Win32.ActiveCfg = Release|Win32
+		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

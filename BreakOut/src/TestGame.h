@@ -6,6 +6,7 @@
 #include "Intro.h"
 #include "Title.h"
 #include "Menu.h"
+#include "Loading.h"
 #include "InGame.h"
 
 using namespace zak;
@@ -31,9 +32,11 @@ public:
 
 private:
 	int _state;
-	Intro _intro;
-	Title _title;
-	Menu _menu;
-	InGame _inGame;
-	Sprite _loading;
+	Intro *_intro;
+	Title *_title;
+	Menu *_menu;
+	InGame *_inGame;
+	Loading *_loading;
+
+  void InputDebug();
 };

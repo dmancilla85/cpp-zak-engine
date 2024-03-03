@@ -5,6 +5,7 @@ Ball::Ball(void)
 	_vx = 0.0f;
 	_vy = 0.0f;
 	_vidas = 0;
+  _speed = INITIAL_SPEED;
 }
 
 Ball::~Ball(void)
@@ -16,19 +17,17 @@ bool Ball::Initialize()
 	if(!LoadIni("./data/ball.spr"))
 		return false;
 	
-	//SetShape(ZAK_SHAPE_QUAD); // Forma
-	SetDim(0.5, 0.5); // Tamaño
+	SetDim(14, 14); // Tamaño
 	SetPos(0, 0); // Posición inicial
-	//SetColor(0xFF0000FF); // Color
 	SetCheckCollision(true); // Deseamos chequear colisión
 
 	// Defino colisión para bola
-	//SetCollisionType(Entity2D::eCollisionBBox);
-	//this->SetCollisionSize(GetWidth(), GetHeight());
+	SetCollisionType(Entity2D::eCollisionCircle);
+  SetCollisionRadius(GetWidth() / 2);
+  SetCollisionVisible(true);
 
 	// Su velocidad inicial
-	_vx = 0.03f;
-	_vy = 0.03f;
+	_vx = _vy = _speed;
 
 	// Al inicio estará pegada al Pad
 	_isSticky = true;
@@ -69,7 +68,7 @@ void Ball::OnCollide(Entity2D *entity)
 
 	// Invertir la velocidad
 	BoundY();
-	Update(0.01f);
+	Update(_vx);
 }
 
 void Ball::Update(float dt)
@@ -123,9 +122,9 @@ void Ball::Update(float dt)
 	if(abs((int)this->_vx) != abs((int)this->_vy))
 		_vx = _vy;
 
-	if(_vx > 0.5f || _vy > 0.5f)
-	{// Su velocidad inicial
-		_vx = 0.5f;
-		_vy = 0.5f;
+	if(_vx > _speed || _vy > _speed)
+	{
+		_vx = _speed;
+		_vy = _speed;
 	}
 }

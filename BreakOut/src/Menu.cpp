@@ -2,10 +2,17 @@
 
 Menu::Menu(void)
 {
+  _logo = NULL;
+  _option = NULL;
 }
 
 Menu::~Menu(void)
 {
+  if(_logo)
+    delete _logo;
+  
+  if(_option)
+    delete [] _option;
 }
 
 bool Menu::Initialize()
@@ -13,16 +20,17 @@ bool Menu::Initialize()
 	// Inicializamo la opción actual
 	// en la primera
 	_optionSelected = 0;
-	
+  _logo = new Sprite;
+  _option = new Sprite[MENU_OPTIONS_COUNT];
 
-	if(!_logo.LoadIni("data/logo.spr"))
+	if(!_logo->LoadIni("data/logo.spr"))
 		return false;
 	else
 	{
-		_logo.SetPosX(20.0f);
-		_logo.SetPosY(180.0f);
-		_logo.SetWidth(300.0f);
-		_logo.SetHeight(200.0f);
+		_logo->SetPosX(20.0f);
+		_logo->SetPosY(180.0f);
+		_logo->SetWidth(300.0f);
+		_logo->SetHeight(200.0f);
 	}
 
 	// Recorremos el arreglo de opciones
@@ -66,7 +74,7 @@ bool Menu::Initialize()
 
 void Menu::Update(float dt)
 {
-	_logo.Update(dt);
+	_logo->Update(dt);
 
 	// Si se presiona la tecla abajo
 	if(KeyDown(DIK_DOWN))
@@ -113,7 +121,7 @@ void Menu::Update(float dt)
 
 void Menu::Draw()
 {
-	_logo.Draw();
+	_logo->Draw();
 	
 	// Mostramos las opciones
 	for(int i = 0; i < MENU_OPTIONS_COUNT; i++)

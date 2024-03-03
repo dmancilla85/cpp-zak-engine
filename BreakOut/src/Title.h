@@ -9,8 +9,8 @@ using namespace zak;
 #define TITLE_STATE_WAIT		2
 #define TITLE_STATE_FADEOUT		3
 
-#define WAIT_TIME				2000.0f
-#define INTERVAL_TIME			5.0f
+#define TITLE_WAIT_TIME				4000.0f
+#define TITLE_INTERVAL_TIME			5.0f
 
 class Title : public Sprite
 {

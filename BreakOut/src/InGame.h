@@ -6,6 +6,7 @@
 #include "Brick.h"
 #include "GameOver.h"
 #include "GameWin.h"
+#include "Loading.h"
 
 // Estados del juego
 #define GAME_STATE_NONE		0
@@ -17,15 +18,15 @@
 // Constantes para los ladrillos
 #define BRICKS_PER_SIDE		10 // Bloques x Lado
 #define BRICKS_FILES		6 // Filas de ladrillos
-#define START_POS_X 		-250
+#define START_POS_X 		-260
 #define START_POS_Y 		280
-#define SPACE_BETWEEN_X		7
-#define SPACE_BETWEEN_Y		5
+#define SPACE_BETWEEN_X		1
+#define SPACE_BETWEEN_Y		1
 
 // Vidas disponibles
-#define VIDAS				6
+#define VIDAS				5
 // Niveles disponibles
-#define NIVELES				2
+#define NIVELES				10
 
 using namespace zak;
 
@@ -40,30 +41,27 @@ public:
 	int GetState() {return _state;}
 	void Update(float dt);
 	void Draw();
+  void Reset();
 
 	InGame(void);
 	~InGame(void);
 	
 private:
-	Ball _ball;
-	Pad _pad;
-	Brick _bricks[BRICKS_PER_SIDE * BRICKS_FILES];
-
+	int _state;
 	int _nivel; // Indicador de nivel
 	int _puntaje; // Acumulador de puntaje
+	float _ladrillosRotos;
+	int _totalLadrillos;
+  
+  Ball _ball;
+	Pad _pad;
+	Brick _bricks[BRICKS_PER_SIDE * BRICKS_FILES];
+  Loading _loading; 
+	GameOver _loseGame;  
+	GameWin _winGame; 
 
 	bool CheckCollision(Entity2D &entity1, Entity2D &entity2);
+	bool BuildWall(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PER_SIDE]);
+	bool BuildWall(string nivel);
 	
-	// Variables para el control de los ladrillos
-	int _ladrillosRotos;
-	int _totalLadrillos;
-
-	bool regenerarMuro(unsigned short _bricksActivos[BRICKS_FILES][BRICKS_PER_SIDE]);
-	bool regenerarMuro(string nivel);
-
-	// Capitulo 5 - Descriptor de estado
-	int _state;
-	Sprite _loading; // Pantalla de carga
-	GameOver _loseGame;  // Pantalla de juego terminado
-	GameWin _winGame; // Pantalla de victoria
 };

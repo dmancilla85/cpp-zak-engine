@@ -205,6 +205,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\Loading.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
 				>
 			</File>
@@ -252,6 +256,10 @@
 			</File>
 			<File
 				RelativePath=".\src\Intro.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\Loading.h"
 				>
 			</File>
 			<File

@@ -1,27 +1,47 @@
 #include "Brick.h"
 
 Brick::Brick(void)
-{
-}
+  {
+  _damage = 0;
+  }
 
 Brick::~Brick(void)
-{
-}
+  {
+  }
 
 bool Brick::Initialize()
-{
-	//SetShape(ZAK_SHAPE_QUAD);
-	if(!LoadIni("./data/brick.spr"))
-		return false;
-	SetDim(50, 20);
-	SetCollisionType(Entity2D::eCollisionBBox);
-	SetCollisionSize(50, 20);
-	SetCheckCollision(true);
-	return true;
-}
+  {
+  //SetShape(ZAK_SHAPE_QUAD);
+
+  bool okLoad = LoadIni("./data/brick.spr");
+
+  if(!okLoad)
+    return false;
+
+  _damage = 0;
+
+  SetDim(65, 26);
+  SetCollisionType(Entity2D::eCollisionBBox);
+  SetCollisionSize(65, 26);
+  SetCheckCollision(true);
+  return true;
+  }
 
 void Brick::OnCollide(zak::Entity2D *entity)
-{
-	SetVisible(false);
-	SetCheckCollision(false);
-}
+  {
+  _damage += HIT_DAMAGE;
+ 
+  if(_damage > 0 && !_showBroken){
+    //LoadIni("./data/broken_brick.spr");
+      _showBroken = true;
+    }
+
+  if(_damage >= 100){
+    SetVisible(false);
+    SetCheckCollision(false);
+    }
+  }
+
+int Brick::GetDamage(){
+  return _damage;
+  }

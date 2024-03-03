@@ -35,7 +35,7 @@ void Title::Update(float dt)
 	switch(_state)
 	{
 	case TITLE_STATE_FADEIN:
-		if(_accum > INTERVAL_TIME)
+		if(_accum > TITLE_INTERVAL_TIME)
 		{
 			_currentColor += D3DCOLOR_ARGB(0x1, 0, 0, 0);
 			
@@ -45,20 +45,20 @@ void Title::Update(float dt)
 				_state = TITLE_STATE_WAIT;
 			}
 
-			_accum -= INTERVAL_TIME;
+			_accum -= TITLE_INTERVAL_TIME;
 		}
 		break;
 
 	case TITLE_STATE_WAIT:
-		if(_accum > WAIT_TIME)
+		if(_accum > TITLE_WAIT_TIME)
 		{
 			_state = TITLE_STATE_FADEOUT;
-			_accum = WAIT_TIME;
+			_accum = TITLE_WAIT_TIME;
 		}
 		break;
 
 	case TITLE_STATE_FADEOUT:
-		if(_accum > INTERVAL_TIME)
+		if(_accum > TITLE_INTERVAL_TIME)
 		{
 			_currentColor -= D3DCOLOR_ARGB(0x1, 0, 0, 0);
 
@@ -68,7 +68,7 @@ void Title::Update(float dt)
 				_state = TITLE_STATE_NONE;
 			}
 
-			_accum -= INTERVAL_TIME; 
+			_accum -= TITLE_INTERVAL_TIME; 
 		}
 		break;
 	}

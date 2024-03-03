@@ -4,6 +4,8 @@
 
 using namespace zak;
 
+#define HIT_DAMAGE 100
+
 class Brick : public Sprite
 {
 public:
@@ -12,4 +14,9 @@ public:
 
 	bool Initialize();
 	void OnCollide(Entity2D *entity);
+  int GetDamage();
+
+private:
+  int _damage;
+  bool _showBroken;
 };
