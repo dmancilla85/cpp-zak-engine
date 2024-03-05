@@ -3,10 +3,8 @@
 #include <sstream>
 #include "zakengine/zak.h"
 
-#include "Intro.h"
-#include "Title.h"
-#include "Menu.h"
-#include "Loading.h"
+#include "intro.h"
+#include "menu.h"
 #include "InGame.h"
 
 using namespace zak;
@@ -15,11 +13,8 @@ using namespace zak;
 #define STATE_INGAME	2
 #define STATE_LOADING	3
 #define STATE_INTRO		4
-#define STATE_TITLE		5
 
-class TestGame :
-	public Game
-{
+class TestGame : public Game {
 public:
 
 	void OnFrame();
@@ -27,16 +22,17 @@ public:
 	bool OnInit();
 	void OnDraw();
 
-	TestGame(void);
-	~TestGame(void);
+	TestGame();
+	~TestGame();
 
 private:
-	int _state;
-	Intro *_intro;
-	Title *_title;
-	Menu *_menu;
-	InGame *_inGame;
-	Loading *_loading;
+	int		m_state;
+  int m_level;
+
+	Intro	m_intro;
+	Menu	m_menu;
+	Sprite	m_loading;
+	InGame	m_inGame;
 
   void ShowInputDebug();
 };

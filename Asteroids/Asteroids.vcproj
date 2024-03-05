@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="HelloZak"
-	ProjectGUID="{FBBF2B14-286B-408F-B863-4B77374DD6F3}"
-	RootNamespace="HelloZak"
+	Name="Asteroids"
+	ProjectGUID="{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}"
+	RootNamespace="Asteroids"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -118,7 +118,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(ProjectDir)include"
+				AdditionalIncludeDirectories="&quot;$(ProjectDir)include&quot;;&quot;$(WINSDK_DIR)Include&quot;;&quot;$(DXSDK_DIR)Include&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -139,7 +139,7 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="user32.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(ProjectDir)lib"
+				AdditionalLibraryDirectories="&quot;$(ProjectDir)lib&quot;;&quot;$(WINSDK_DIR)Lib&quot;;&quot;$(DXSDK_DIR)Lib\x86&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -181,7 +181,27 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\src\asteroid.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\asteroidmanager.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\checkcollision.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\game.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ingame.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\intro.cpp"
 				>
 			</File>
 			<File
@@ -189,7 +209,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Asteroids\src\shot.cpp"
+				RelativePath=".\src\menu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ship.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\shot.cpp"
 				>
 			</File>
 		</Filter>
@@ -199,7 +227,43 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\src\asteroid.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\asteroidmanager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\checkcollision.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\game.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ingame.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\intro.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\mathutil.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\menu.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ship.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\shot.h"
 				>
 			</File>
 		</Filter>

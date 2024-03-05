@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sprites", "Sprites\Sprites.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "States", "States\States.vcproj", "{1CCFAD49-412B-4DA8-A860-3130363D88B5}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Asteroids", "Asteroids\Asteroids.vcproj", "{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -37,6 +39,10 @@ Global
 		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Debug|Win32.Build.0 = Debug|Win32
 		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Release|Win32.ActiveCfg = Release|Win32
 		{1CCFAD49-412B-4DA8-A860-3130363D88B5}.Release|Win32.Build.0 = Release|Win32
+		{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}.Debug|Win32.Build.0 = Debug|Win32
+		{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}.Release|Win32.ActiveCfg = Release|Win32
+		{A4EB377A-EA64-4E3B-8AC3-F023ACF6CD4D}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

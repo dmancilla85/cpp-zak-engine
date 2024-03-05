@@ -15,5 +15,5 @@ public:
   TestGame();
   ~TestGame();
 private:
-  void InputDebug();
+  void ShowInputDebug();
   };

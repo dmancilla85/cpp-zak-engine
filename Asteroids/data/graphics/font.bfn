@@ -1,0 +1,10 @@
+[FONT]
+Filename="data/graphics/font.tga"
+ColorKey=0
+SideCount=16
+Width=32
+Height=32
+PosX=0
+PosY=0
+Persist=false
+Spacing=16

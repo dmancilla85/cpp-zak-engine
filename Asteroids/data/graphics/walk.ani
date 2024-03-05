@@ -1,0 +1,15 @@
+[SPRITE_ANIMATION]
+FramesCount=9
+
+Frame0=22
+Frame1=23
+Frame2=24
+Frame3=25
+Frame4=26
+Frame5=27
+Frame6=25
+Frame7=24
+Frame8=23
+
+Speed=30
+Looped=true

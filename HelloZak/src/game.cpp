@@ -8,7 +8,7 @@ TestGame::~TestGame() {
 
   }
 
-void TestGame::InputDebug(){
+void TestGame::ShowInputDebug(){
   wstringstream ss;
 
   ss << ZAK_ENGINE_NAME << endl << "FPS: " << _fpsMeter.GetFps() << endl;
@@ -40,5 +40,5 @@ bool TestGame::OnInit()  {
 void TestGame::OnDraw() {
   
   if(_DEBUG)
-    InputDebug();
+    ShowInputDebug();
  }
