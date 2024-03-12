@@ -1,0 +1,8 @@
+[SPRITE_ANIMATION]
+FramesCount=2
+
+Frame0=11
+Frame1=12
+
+SpeedFPS=20
+Looped=true

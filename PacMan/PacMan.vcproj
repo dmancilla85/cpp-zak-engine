@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8,00"
-	Name="HelloZak"
-	ProjectGUID="{FBBF2B14-286B-408F-B863-4B77374DD6F3}"
-	RootNamespace="HelloZak"
+	Name="PacMan"
+	ProjectGUID="{6A4EE765-0336-4B12-A936-B866489FB3FB}"
+	RootNamespace="PacMan"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -18,7 +18,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="$(ProjectDir)bin"
-			IntermediateDirectory="$(ConfigurationName)"
+			IntermediateDirectory="obj\$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
 			>
@@ -95,7 +95,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(ProjectDir)bin"
+			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
 			CharacterSet="1"
@@ -118,7 +118,6 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="$(ProjectDir)include"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -137,9 +136,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="user32.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(ProjectDir)lib"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"
@@ -181,11 +178,63 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\src\actor.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\actorMgr.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\CheckCollision.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\cyanGhost.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\game.cpp"
 				>
 			</File>
 			<File
+				RelativePath=".\src\ghost.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\InGame.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\intro.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\level.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\src\main.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\menu.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\orangeGhost.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pacman.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pinkGhost.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\redGhost.cpp"
 				>
 			</File>
 		</Filter>
@@ -195,7 +244,59 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\src\actor.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\actorMgr.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\CheckCollision.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\cyanGhost.h"
+				>
+			</File>
+			<File
 				RelativePath=".\src\game.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\ghost.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\InGame.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\intro.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\level.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\menu.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\orangeGhost.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pacman.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\pinkGhost.h"
+				>
+			</File>
+			<File
+				RelativePath=".\src\redGhost.h"
 				>
 			</File>
 		</Filter>
